@@ -23,6 +23,5 @@ jobs:
           team: min-side
           source: ./packages
           destination: "sokos-shared-dependencies"
-          cache-invalidation: true
           identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
           project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
