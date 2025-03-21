@@ -6,6 +6,7 @@ on:
 
 jobs:
   upload:
+    name: "Upload to cdn"
     runs-on: ubuntu-latest
 
     permissions:
