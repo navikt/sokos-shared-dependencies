@@ -1,0 +1,28 @@
+name: "Deploy main"
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: "read"
+      id-token: "write"
+      packages: "write"
+
+    steps:
+      - name: "Clone repository"
+        uses: "actions/checkout@v3"
+
+      - name: "Upload dependencies"
+        uses: nais/deploy/actions/cdn-upload/v2@master
+        with:
+          team: min-side
+          source: ./packages
+          destination: "sokos-shared-dependencies"
+          cache-invalidation: true
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
