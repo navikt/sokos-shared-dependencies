@@ -1,28 +1,25 @@
-name: "Deploy main"
+name: Deploy to CDN
 on:
   push:
     branches:
-      - "main"
+      - main
+
+permissions:
+  contents: "read"
+  id-token: "write"
+  packages: "write"
 
 jobs:
-  upload:
-    name: "Upload to cdn"
+  upload-to-cdn:
+    name: Upload to cdn
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: "read"
-      id-token: "write"
-      packages: "write"
-
     steps:
-      - name: "Clone repository"
-        uses: "actions/checkout@v3"
+        - uses: "actions/checkout@v3"
 
-      - name: "Upload dependencies"
-        uses: nais/deploy/actions/cdn-upload/v2@master
-        with:
-          team: mob
-          source: ./packages
-          destination: "sokos-shared-dependencies"
-          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
-          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
+        - name: Upload dependencies
+          uses: nais/deploy/actions/cdn-upload/v2@master
+          with:
+            team: okonomi
+            source: ./packages
+            destination: sokos-shared-dependencies
