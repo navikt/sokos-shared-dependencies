@@ -2,7 +2,8 @@ name: Deploy to CDN
 on:
   push:
     branches:
-      - main
+      - "main"
+      - "dev-*"
 
 permissions:
   contents: "read"
