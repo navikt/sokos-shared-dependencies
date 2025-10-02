@@ -3,10 +3,10 @@
 ## Hvordan bumpe React og React-DOM version:
 
 ### Steg 1
-Sjekk først hvilken version som ligger inne for React og React-DOM:
+Sjekk først hvilken version som ligger inne for React, React-DOM og Scheduler:
 1. React -> https://esm.sh/react@version
 2. React-DOM -> https://esm.sh/react-dom@version
-3. scheduler -> https://esm.sh/scheduler@version (Bør bumpes hvis ny version er tilgjengelig)
+3. Scheduler -> https://esm.sh/scheduler@version (Bør bumpes hvis ny version er tilgjengelig)
 
 ### Steg 2
 Lage mapper
