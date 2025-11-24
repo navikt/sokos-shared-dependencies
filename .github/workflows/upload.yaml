@@ -16,12 +16,12 @@ jobs:
       packages: write
     runs-on: ubuntu-latest
     steps:
-      - uses: "actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8" # ratchet:actions/checkout@v5
+      - uses: "actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3" # ratchet:actions/checkout@v5
         with:
           persist-credentials: false
 
       - name: Upload dependencies to CDN
-        uses: nais/deploy/actions/cdn-upload/v2@21af204a4d63d1c10d149916d96669d5c2fa6f76 # ratchet:nais/deploy/actions/cdn-upload/v2@master
+        uses: nais/deploy/actions/cdn-upload/v2@56e14061f2a8437bd9119e7b8f92749a3b288db1 # ratchet:nais/deploy/actions/cdn-upload/v2@master
         with:
           team: okonomi
           source: ./packages
