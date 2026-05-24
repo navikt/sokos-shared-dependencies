@@ -1,11 +1,6 @@
 ---
 name: bump-shared-dependencies
 description: Bump React, React-DOM og Scheduler til ny versjon — hent fra esm.sh, skriv om import-stier til Nav CDN
-license: MIT
-compatibility: sokos-shared-dependencies (CDN-hosting repo)
-metadata:
-  domain: cdn
-  tags: react react-dom scheduler esm cdn bump versjon
 ---
 
 # Bump shared dependencies

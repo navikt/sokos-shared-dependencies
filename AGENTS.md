@@ -44,73 +44,29 @@ https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react/19.2.6/react
 
 Sjekk alltid **alle tre pakker** (react, react-dom, scheduler) samtidig — selv om du bare skal bumpe React.
 
-### 1. Sjekk siste versjon fra esm.sh
+For detaljert steg-for-steg: se `.github/skills/bump-shared-dependencies/SKILL.md`.
 
-```bash
-curl --noproxy '*' -s "https://esm.sh/react"
-curl --noproxy '*' -s "https://esm.sh/react-dom"
-curl --noproxy '*' -s "https://esm.sh/scheduler"
-```
+### Kort oppsummering
 
-Responsen er en barrel-fil som viser versjonen og stien:
-```javascript
-/* esm.sh - react@19.2.6 */
-export * from "/react@19.2.6/es2022/react.mjs";
-export { default } from "/react@19.2.6/es2022/react.mjs";
-```
+1. **Sjekk versjoner** — `curl --noproxy '*' -s "https://esm.sh/react"` (les versjon fra kommentaren)
+2. **Hent bundler** — esm.sh har en to-trinns prosess: barrel-fil viser sti → hent faktisk bundle fra den stien
+3. **Skriv om imports** — erstatt relative esm.sh-stier med fulle CDN URL-er i `react-dom.mjs` og `client.mjs`
+4. **Verifiser** — riktige versjoner, alle filer på plass
+5. **Push** — workflow laster opp til CDN automatisk
 
-Versjonen i kommentaren er siste tilgjengelige. Stien i `from "..."` forteller hvor den faktiske bundelen ligger.
+### Import-rewriting
 
-### 2. Hent bundler (to-trinns)
-
-esm.sh har en barrel-fil og en faktisk bundle. Du henter bundelen direkte fra stien i barrel-filen:
-
-```bash
-mkdir -p packages/react/{REACT_VERSJON} packages/react-dom/{REACT_VERSJON}
-
-# React — hent fra stien vist i barrel-filen
-curl --noproxy '*' -s "https://esm.sh/react@{REACT_VERSJON}/es2022/react.mjs" -o packages/react/{REACT_VERSJON}/react.mjs
-curl --noproxy '*' -s "https://esm.sh/react@{REACT_VERSJON}/es2022/jsx-runtime.mjs" -o packages/react/{REACT_VERSJON}/jsx-runtime.mjs
-
-# React-DOM
-curl --noproxy '*' -s "https://esm.sh/react-dom@{REACT_VERSJON}/es2022/react-dom.mjs" -o packages/react-dom/{REACT_VERSJON}/react-dom.mjs
-curl --noproxy '*' -s "https://esm.sh/react-dom@{REACT_VERSJON}/es2022/client.mjs" -o packages/react-dom/{REACT_VERSJON}/client.mjs
-
-# Scheduler (kun hvis ny versjon)
-mkdir -p packages/scheduler/{SCHEDULER_VERSJON}
-curl --noproxy '*' -s "https://esm.sh/scheduler@{SCHEDULER_VERSJON}/es2022/scheduler.mjs" -o packages/scheduler/{SCHEDULER_VERSJON}/scheduler.mjs
-```
-
-> **Merk:** Stien (f.eks. `es2022`) kan variere mellom versjoner. Sjekk alltid barrel-filen fra steg 1 for korrekt sti.
-
-### 3. Skriv om import-stier i `react-dom.mjs`
-
-Filen har en import-linje som peker på en relativ esm.sh-sti. Erstatt den med full CDN URL:
-
+`react-dom.mjs` — én import:
 ```javascript
 import * as __0$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react/{REACT_VERSJON}/react.mjs";
 ```
 
-### 4. Skriv om import-stier i `client.mjs`
-
-Filen har tre import-linjer. Erstatt alle med fulle CDN URL-er:
-
+`client.mjs` — tre imports:
 ```javascript
 import * as __0$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/scheduler/{SCHEDULER_VERSJON}/scheduler.mjs";
 import * as __1$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react/{REACT_VERSJON}/react.mjs";
 import * as __2$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react-dom/{REACT_VERSJON}/react-dom.mjs";
 ```
-
-### 5. Verifiser
-
-- Alle filer starter med `/* esm.sh - {pakke}@{versjon} */`
-- Import-stiene peker på riktige versjoner
-- React og React-DOM bruker samme versjon
-- `client.mjs` refererer til korrekt `react-dom.mjs` i samme versjon
-
-### 6. Push og sjekk CDN
-
-Etter push: gå til [Nais Console → Team CDN Bucket](https://console.nav.cloud.nais.io/team/okonomi/settings) og verifiser at filene er lastet opp.
 
 ## Regler
 
@@ -130,4 +86,4 @@ Etter push: gå til [Nais Console → Team CDN Bucket](https://console.nav.cloud
 
 ## Workflow
 
-GitHub Actions (`deploy.yaml`) laster opp hele `packages/`-mappen til Nav CDN ved push til `main`. Markdown-filer, LICENSE og .gitignore trigges ikke (paths-ignore).
+GitHub Actions (`upload.yaml`) laster opp `packages/`-mappen til Nav CDN ved push til `main`. Workflowen trigges kun ved endringer i `packages/`.
