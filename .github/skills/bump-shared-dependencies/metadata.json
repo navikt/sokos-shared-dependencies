@@ -1,0 +1,32 @@
+{
+	"description": "Bump React, React-DOM og Scheduler til ny versjon — hent fra esm.sh, skriv om import-stier til Nav CDN. Sjekker alltid alle tre pakker sammen.",
+	"domain": "cdn",
+	"tags": [
+		"react",
+		"react-dom",
+		"scheduler",
+		"esm",
+		"cdn",
+		"bump",
+		"versjon",
+		"shared-dependencies"
+	],
+	"examples": [
+		{
+			"prompt": "Bump react til nyeste versjon",
+			"scenario": "Sjekk siste versjon av react, react-dom og scheduler fra esm.sh. Bump alle som har ny versjon. Behold eksisterende scheduler-versjon hvis ingen ny finnes."
+		},
+		{
+			"prompt": "Sjekk ny versjon for react og react-dom",
+			"scenario": "Sjekk siste versjon av alle tre pakker (react, react-dom, scheduler) fra esm.sh og rapporter hva som er nytt."
+		},
+		{
+			"prompt": "Bump React til 19.3.0",
+			"scenario": "Bump react og react-dom til 19.3.0. Sjekk scheduler — bump hvis ny versjon, ellers behold eksisterende."
+		},
+		{
+			"prompt": "Oppdater shared dependencies",
+			"scenario": "Sjekk alle tre pakker fra esm.sh, bump de som har ny versjon tilgjengelig."
+		}
+	]
+}
