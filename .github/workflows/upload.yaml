@@ -21,7 +21,7 @@ jobs:
           persist-credentials: false
 
       - name: Upload dependencies to CDN
-        uses: nais/deploy/actions/cdn-upload/v2@fa754451577294aae42872a69b888b3470478ec1 # ratchet:nais/deploy/actions/cdn-upload/v2@master
+        uses: nais/deploy/actions/cdn-upload/v2@2f28259ff29ea37915f5a0c9e2a8e3542c429df7 # ratchet:nais/deploy/actions/cdn-upload/v2@master
         with:
           team: okonomi
           source: ./packages
