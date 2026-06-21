@@ -35,11 +35,6 @@ Hver pakke har en mappe per versjon. Gamle versjoner slettes **ikke** — de kan
 https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/{pakke}/{versjon}/{fil}.mjs
 ```
 
-Eksempel:
-```
-https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react/19.2.6/react.mjs
-```
-
 ## Bumpe versjon
 
 Sjekk alltid **alle tre pakker** (react, react-dom, scheduler) samtidig — selv om du bare skal bumpe React.
@@ -52,7 +47,7 @@ For detaljert steg-for-steg: se `.github/skills/bump-shared-dependencies/SKILL.m
 2. **Hent bundler** — esm.sh har en to-trinns prosess: barrel-fil viser sti → hent faktisk bundle fra den stien
 3. **Skriv om imports** — erstatt relative esm.sh-stier med fulle CDN URL-er i `react-dom.mjs` og `client.mjs`
 4. **Verifiser** — riktige versjoner, alle filer på plass
-5. **Push** — workflow laster opp til CDN automatisk
+5. **Commit og push manuelt** — agenter gjør ikke dette; workflow laster opp til CDN automatisk
 
 ### Import-rewriting
 

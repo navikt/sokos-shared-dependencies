@@ -26,6 +26,7 @@ CDN hosting repository for shared JavaScript dependencies used by microfrontends
 3. **Import paths in `client.mjs` and `react-dom.mjs` must be full CDN URLs**
 4. **React and React-DOM versions must match** — scheduler version may differ
 5. **No secrets, tokens or environment-specific values in `.mjs` files**
+6. **Never run `git commit` or `git push`** — always leave this to the developer
 
 ## When Adding a New Version
 

@@ -165,47 +165,26 @@ Oppdater tabellen «Nåværende versjoner» i `AGENTS.md`:
 
 ---
 
-## Eksempel: Bump til React 19.2.6
+## Eksempel: Slik utleder du versjoner dynamisk
 
-Med React 19.2.6 og Scheduler 0.27.0 (uendret):
+Ikke hardkod versjoner. Bruk alltid steg 1 til å finne gjeldende og nyeste versjon:
 
-### Finn stier (steg 3.1)
 ```bash
-curl --noproxy '*' -s "https://esm.sh/react@19.2.6"
-# → export * from "/react@19.2.6/es2022/react.mjs";
+# Nåværende versjon i repoet
+CURRENT=$(ls packages/react/ | sort -V | tail -1)
 
-curl --noproxy '*' -s "https://esm.sh/react@19.2.6/jsx-runtime"
-# → export * from "/react@19.2.6/es2022/jsx-runtime.mjs";
+# Nyeste versjon fra esm.sh
+LATEST=$(curl --noproxy '*' -s "https://esm.sh/react" | head -1 | grep -o '[0-9]\+\.[0-9]\+\.[0-9]\+')
 
-curl --noproxy '*' -s "https://esm.sh/react-dom@19.2.6"
-# → export * from "/react-dom@19.2.6/es2022/react-dom.mjs";
-
-curl --noproxy '*' -s "https://esm.sh/react-dom@19.2.6/client"
-# → export * from "/react-dom@19.2.6/es2022/client.mjs";
+echo "Nåværende: $CURRENT"
+echo "Tilgjengelig: $LATEST"
 ```
 
-### Hent bundler (steg 3.2)
+Bruk `$LATEST` som `{REACT_VERSJON}` i alle påfølgende steg. Sjekk scheduler på samme måte:
+
 ```bash
-mkdir -p packages/react/19.2.6 packages/react-dom/19.2.6
-
-curl --noproxy '*' -s "https://esm.sh/react@19.2.6/es2022/react.mjs" -o packages/react/19.2.6/react.mjs
-curl --noproxy '*' -s "https://esm.sh/react@19.2.6/es2022/jsx-runtime.mjs" -o packages/react/19.2.6/jsx-runtime.mjs
-curl --noproxy '*' -s "https://esm.sh/react-dom@19.2.6/es2022/react-dom.mjs" -o packages/react-dom/19.2.6/react-dom.mjs
-curl --noproxy '*' -s "https://esm.sh/react-dom@19.2.6/es2022/client.mjs" -o packages/react-dom/19.2.6/client.mjs
-```
-
-### Import-rewriting (steg 4 og 5)
-
-`react-dom.mjs` — erstatt første import:
-```javascript
-import * as __0$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react/19.2.6/react.mjs";
-```
-
-`client.mjs` — erstatt de tre første imports:
-```javascript
-import * as __0$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/scheduler/0.27.0/scheduler.mjs";
-import * as __1$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react/19.2.6/react.mjs";
-import * as __2$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react-dom/19.2.6/react-dom.mjs";
+CURRENT_SCHEDULER=$(ls packages/scheduler/ | sort -V | tail -1)
+LATEST_SCHEDULER=$(curl --noproxy '*' -s "https://esm.sh/scheduler" | head -1 | grep -o '[0-9]\+\.[0-9]\+\.[0-9]\+')
 ```
 
 ---
