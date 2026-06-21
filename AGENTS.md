@@ -70,6 +70,7 @@ import * as __2$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/pack
 
 ## Regler
 
+- **Agenter må aldri kjøre `git commit` eller `git push` i dette repoet** — commit og push gjøres alltid manuelt av utvikleren
 - Bruk alltid `pnpm` i prosjekter som konsumerer disse filene — aldri `npm` eller `yarn`
 - Ikke slett gamle versjonsmapper — andre apper kan fortsatt peke på dem
 - Ikke endre eksisterende filer uten å bumpe versjon (CDN-caching)
@@ -80,8 +81,8 @@ import * as __2$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/pack
 
 | Pakke | Versjon |
 |-------|---------|
-| react | 19.2.6 |
-| react-dom | 19.2.6 |
+| react | 19.2.7 |
+| react-dom | 19.2.7 |
 | scheduler | 0.27.0 |
 
 ## Workflow

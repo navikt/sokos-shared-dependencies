@@ -212,6 +212,10 @@ import * as __2$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/pack
 
 ## Commit-melding
 
+> ⚠️ Agenten skal **ikke** kjøre `git commit` eller `git push`. Presenter forslag til commit-melding og la utvikleren committe selv.
+
+Forslag til commit-melding:
+
 ```
 chore: bump React til {REACT_VERSJON}
 
