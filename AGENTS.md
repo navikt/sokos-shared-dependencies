@@ -76,8 +76,8 @@ import * as __2$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/pack
 
 | Pakke | Versjon |
 |-------|---------|
-| react | 19.2.7 |
-| react-dom | 19.2.7 |
+| react | 19.2.8 |
+| react-dom | 19.2.8 |
 | scheduler | 0.27.0 |
 
 ## Workflow
