@@ -1,4 +1,4 @@
-# AGENTS.md — sokos-shared-dependencies
+# AGENTS.md — beregningsplattform-shared-dependencies
 
 CDN-hosting av delte JavaScript-avhengigheter (React, React-DOM, Scheduler) for mikrofrontender i sokos-utbetalingsportalen. Filene serveres fra Nav CDN og brukes via importmap.
 
@@ -7,7 +7,7 @@ CDN-hosting av delte JavaScript-avhengigheter (React, React-DOM, Scheduler) for 
 Repoet har ingen build-steg. Du legger til filer og pusher til `main` — GitHub Actions laster opp til CDN automatisk.
 
 ```bash
-git clone https://github.com/navikt/sokos-shared-dependencies
+git clone https://github.com/navikt/beregningsplattform-shared-dependencies
 # Gjør endringer i packages/
 git add . && git commit && git push
 # Workflow laster opp til CDN innen ~1 minutt
@@ -32,7 +32,7 @@ Hver pakke har en mappe per versjon. Gamle versjoner slettes **ikke** — de kan
 ## CDN URL-mønster
 
 ```
-https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/{pakke}/{versjon}/{fil}.mjs
+https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/{pakke}/{versjon}/{fil}.mjs
 ```
 
 ## Bumpe versjon
@@ -53,14 +53,14 @@ For detaljert steg-for-steg: se `.github/skills/bump-shared-dependencies/SKILL.m
 
 `react-dom.mjs` — én import:
 ```javascript
-import * as __0$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react/{REACT_VERSJON}/react.mjs";
+import * as __0$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/react/{REACT_VERSJON}/react.mjs";
 ```
 
 `client.mjs` — tre imports:
 ```javascript
-import * as __0$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/scheduler/{SCHEDULER_VERSJON}/scheduler.mjs";
-import * as __1$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react/{REACT_VERSJON}/react.mjs";
-import * as __2$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react-dom/{REACT_VERSJON}/react-dom.mjs";
+import * as __0$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/scheduler/{SCHEDULER_VERSJON}/scheduler.mjs";
+import * as __1$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/react/{REACT_VERSJON}/react.mjs";
+import * as __2$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/react-dom/{REACT_VERSJON}/react-dom.mjs";
 ```
 
 ## Regler

@@ -114,7 +114,7 @@ curl --noproxy '*' -s "https://esm.sh/scheduler@{SCHEDULER_VERSJON}/es2022/sched
 Finn den første import-linjen (starter med `import * as __0$`). Erstatt den med:
 
 ```javascript
-import * as __0$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react/{REACT_VERSJON}/react.mjs";
+import * as __0$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/react/{REACT_VERSJON}/react.mjs";
 ```
 
 Resten av filen forblir uendret.
@@ -128,9 +128,9 @@ Resten av filen forblir uendret.
 Finn de tre første import-linjene (starter med `import * as __0$`, `__1$`, `__2$`). Erstatt dem med:
 
 ```javascript
-import * as __0$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/scheduler/{SCHEDULER_VERSJON}/scheduler.mjs";
-import * as __1$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react/{REACT_VERSJON}/react.mjs";
-import * as __2$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react-dom/{REACT_VERSJON}/react-dom.mjs";
+import * as __0$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/scheduler/{SCHEDULER_VERSJON}/scheduler.mjs";
+import * as __1$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/react/{REACT_VERSJON}/react.mjs";
+import * as __2$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/react-dom/{REACT_VERSJON}/react-dom.mjs";
 ```
 
 Resten av filen forblir uendret.

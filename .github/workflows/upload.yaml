@@ -28,6 +28,6 @@ jobs:
       - name: Upload dependencies to CDN
         uses: nais/deploy/actions/cdn-upload/v2@9850be311389ca754d9a9f2280615419d738c891 # ratchet:nais/deploy/actions/cdn-upload/v3@v3
         with:
-          team: okonomi
+          team: beregningsplattform
           source: ./packages
-          destination: sokos-shared-dependencies
+          destination: beregningsplattform-shared-dependencies

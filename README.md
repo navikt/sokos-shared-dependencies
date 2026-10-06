@@ -1,4 +1,4 @@
-# sokos-shared-dependencies
+# beregningsplattform-shared-dependencies
 
 CDN-hosting av delte JavaScript-avhengigheter for mikrofrontender i [sokos-utbetalingsportalen](https://github.com/navikt/sokos-utbetalingsportalen). Filene serveres fra Nav CDN og brukes via importmap.
 
@@ -8,7 +8,7 @@ Repoet har ingen build-steg. Du legger til `.mjs`-filer i `packages/` og pusher 
 
 **CDN URL-mønster:**
 ```
-https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/{pakke}/{versjon}/{fil}.mjs
+https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/{pakke}/{versjon}/{fil}.mjs
 ```
 
 ## Pakker
@@ -73,19 +73,19 @@ curl -s "https://esm.sh/scheduler@0.27.0/es2022/scheduler.mjs" -o packages/sched
 
 `react-dom.mjs` — erstatt første import med full CDN URL:
 ```javascript
-import * as __0$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react/19.2.6/react.mjs";
+import * as __0$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/react/19.2.6/react.mjs";
 ```
 
 `client.mjs` — erstatt de tre første import-linjene:
 ```javascript
-import * as __0$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/scheduler/0.27.0/scheduler.mjs";
-import * as __1$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react/19.2.6/react.mjs";
-import * as __2$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react-dom/19.2.6/react-dom.mjs";
+import * as __0$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/scheduler/0.27.0/scheduler.mjs";
+import * as __1$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/react/19.2.6/react.mjs";
+import * as __2$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/react-dom/19.2.6/react-dom.mjs";
 ```
 
 #### 4. Push og verifiser
 
-Commit, push til `main`, og sjekk at filene dukker opp i [Nais Console → Team CDN Bucket](https://console.nav.cloud.nais.io/team/okonomi/settings).
+Commit, push til `main`, og sjekk at filene dukker opp i [Nais Console → Team CDN Bucket](https://console.nav.cloud.nais.io/team/beregningsplattform/settings).
 
 ## Regler
 

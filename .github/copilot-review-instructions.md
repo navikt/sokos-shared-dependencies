@@ -1,4 +1,4 @@
-# Copilot Review Instructions — sokos-shared-dependencies
+# Copilot Review Instructions — beregningsplattform-shared-dependencies
 
 Du gjennomgår kode i et CDN-hosting-repo for delte JavaScript-avhengigheter. Repoet inneholder pre-bundlede ESM-moduler (React, React-DOM, Scheduler) som serveres fra Nav CDN til mikrofrontender.
 
@@ -7,7 +7,7 @@ Du gjennomgår kode i et CDN-hosting-repo for delte JavaScript-avhengigheter. Re
 ### 🔴 Import-stier (alltid kommenter)
 
 - **Feil versjon i import-sti** — `client.mjs` og `react-dom.mjs` må peke på riktige versjoner i CDN URL-ene. Versjonen i import-stien må matche versjonsmappen filen ligger i (eller riktig avhengighetsversjon for scheduler).
-- **Relative import-stier** — Alle import-stier skal bruke full CDN URL (`https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/...`), aldri relative stier.
+- **Relative import-stier** — Alle import-stier skal bruke full CDN URL (`https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/...`), aldri relative stier.
 - **Versjonskonsistens** — React og React-DOM bør bruke samme versjon. Scheduler kan ha sin egen versjon.
 
 ### 🟠 Filstruktur (kommenter ved avvik)

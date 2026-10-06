@@ -1,7 +1,7 @@
 /* esm.sh - react-dom@19.1.0//client */
-import * as __2$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react-dom/19.1.0/react-dom.mjs";
-import * as __1$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/react/19.1.0/react.mjs";
-import * as __0$ from "https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/scheduler/0.26.0/scheduler.mjs";
+import * as __2$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/react-dom/19.1.0/react-dom.mjs";
+import * as __1$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/react/19.1.0/react.mjs";
+import * as __0$ from "https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/scheduler/0.26.0/scheduler.mjs";
 var require = (n) => {
   const e = (m) => (typeof m.default < "u" ? m.default : m),
     c = (m) => Object.assign({ __esModule: true }, m);

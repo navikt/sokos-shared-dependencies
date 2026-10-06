@@ -1,4 +1,4 @@
-# Copilot Instructions for sokos-shared-dependencies
+# Copilot Instructions for beregningsplattform-shared-dependencies
 
 ## Project Overview
 
@@ -9,7 +9,7 @@ CDN hosting repository for shared JavaScript dependencies used by microfrontends
 - **No build step** — files are static `.mjs` bundles from esm.sh with rewritten import paths
 - **No package.json** — this is not a Node.js project
 - **Deployment** — push to `main` triggers automatic CDN upload via GitHub Actions
-- **CDN URL pattern** — `https://cdn.nav.no/okonomi/sokos-shared-dependencies/packages/{package}/{version}/{file}.mjs`
+- **CDN URL pattern** — `https://cdn.nav.no/beregningsplattform/beregningsplattform-shared-dependencies/packages/{package}/{version}/{file}.mjs`
 
 ## File Conventions
 
